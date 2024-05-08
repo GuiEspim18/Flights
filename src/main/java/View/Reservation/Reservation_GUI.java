@@ -4,11 +4,17 @@
  */
 package View.Reservation;
 
+import Model.Flights_DAO;
+import View.Menu_GUI;
+
 /**
  *
  * @author guiespim
  */
 public class Reservation_GUI extends javax.swing.JFrame {
+    
+    Flights_DAO flights;
+    Menu_GUI menu;
 
     /**
      * Creates new form Reservation_GUI
@@ -16,7 +22,12 @@ public class Reservation_GUI extends javax.swing.JFrame {
     public Reservation_GUI() {
         initComponents();
     }
-
+    
+    public Reservation_GUI(Flights_DAO flights, Menu_GUI menu) {
+        this.flights = flights;
+        this.menu = menu;
+        initComponents();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,8 +38,8 @@ public class Reservation_GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        consult = new javax.swing.JButton();
+        number = new javax.swing.JTextField();
         back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -36,14 +47,19 @@ public class Reservation_GUI extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(46, 195, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consultar Voo por Número", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 13), new java.awt.Color(51, 51, 51))); // NOI18N
 
-        jButton7.setBackground(new java.awt.Color(248, 253, 255));
-        jButton7.setForeground(new java.awt.Color(46, 195, 255));
-        jButton7.setText("Consultar");
-
-        jTextField1.setBackground(new java.awt.Color(248, 253, 255));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        consult.setBackground(new java.awt.Color(248, 253, 255));
+        consult.setForeground(new java.awt.Color(46, 195, 255));
+        consult.setText("Consultar");
+        consult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                consultActionPerformed(evt);
+            }
+        });
+
+        number.setBackground(new java.awt.Color(248, 253, 255));
+        number.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberActionPerformed(evt);
             }
         });
 
@@ -62,9 +78,9 @@ public class Reservation_GUI extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                .addComponent(number, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton7)
+                .addComponent(consult)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -75,8 +91,8 @@ public class Reservation_GUI extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
+                    .addComponent(consult, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(number))
                 .addGap(155, 155, 155)
                 .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
         );
@@ -95,14 +111,23 @@ public class Reservation_GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void numberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberActionPerformed
+        
+    }//GEN-LAST:event_numberActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        new View.Menu_GUI().setVisible(true);
+        this.menu.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_backActionPerformed
+
+    private void consultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultActionPerformed
+        View.Reservation.Reservate_GUI reservate = new View.Reservation.Reservate_GUI(flights, this);
+        if (reservate.findFlight(number.getText())) {
+            reservate.setVisible(true);
+            reservate.populate();
+            setVisible(false);
+        }
+    }//GEN-LAST:event_consultActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,8 +166,8 @@ public class Reservation_GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton consult;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField number;
     // End of variables declaration//GEN-END:variables
 }

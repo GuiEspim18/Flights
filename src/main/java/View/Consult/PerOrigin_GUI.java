@@ -6,17 +6,27 @@ package View.Consult;
 
 import Model.Flight_DAO;
 import Model.Flights_DAO;
+import View.Consult.Consult_GUI;
 
 /**
  *
  * @author guiespim
  */
 public class PerOrigin_GUI extends javax.swing.JFrame {
+    
+    Flights_DAO flights;
+    Consult_GUI consultGui;
 
     /**
      * Creates new form PerOrigin
      */
     public PerOrigin_GUI() {
+        initComponents();
+    }
+    
+    public PerOrigin_GUI(Flights_DAO flights, Consult_GUI consult) {
+        this.flights = flights;
+        this.consultGui = consult;
         initComponents();
     }
 
@@ -171,12 +181,12 @@ public class PerOrigin_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_originNameActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        new View.Consult.Consult_GUI().setVisible(true);
+        this.consultGui.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_backActionPerformed
 
     private void consultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultActionPerformed
-        Flight_DAO flight = new Flights_DAO().perOrigin(originName.getText());
+        Flight_DAO flight = this.flights.perOrigin(originName.getText());
         javax.swing.JLabel[] chairs = { this.line1, this.line2, this.line3 };
         this.origin.setText(flight.origin);
         this.destination.setText(flight.destination);

@@ -8,6 +8,7 @@ View/Consult/PerDestination_GUI$1.class
 View/Consult/PerDestination_GUI$2.class
 View/Menu_GUI$4.class
 View/Consult/PerDestination_GUI.class
+View/Reservation/Reservation_GUI$4.class
 View/Consult/PerOrigin_GUI$4.class
 View/Consult/Consult_GUI$5.class
 View/Menu_GUI.class
@@ -25,6 +26,7 @@ View/Reservation/Reservation_GUI$2.class
 View/Consult/Consult_GUI.class
 View/Reservation/Reservate_GUI$3.class
 View/Consult/PerNumber_GUI.class
+View/Reservation/Reservate_GUI$4.class
 View/Consult/PerNumber_GUI$4.class
 View/Consult/PerOrigin_GUI$3.class
 View/Reservation/Reservation_GUI$3.class

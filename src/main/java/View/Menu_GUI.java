@@ -4,11 +4,15 @@
  */
 package View;
 
+import Model.Flights_DAO;
+
 /**
  *
  * @author guiespim
  */
 public class Menu_GUI extends javax.swing.JFrame {
+    
+    Flights_DAO flights = new Flights_DAO();
 
     /**
      * Creates new form Consult_GUI
@@ -102,12 +106,12 @@ public class Menu_GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void consultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultActionPerformed
-        new View.Consult.Consult_GUI().setVisible(true);
+        new View.Consult.Consult_GUI(flights, this).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_consultActionPerformed
 
     private void reservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservationActionPerformed
-        new View.Reservation.Reservation_GUI().setVisible(true);
+        new View.Reservation.Reservation_GUI(flights, this).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_reservationActionPerformed
 

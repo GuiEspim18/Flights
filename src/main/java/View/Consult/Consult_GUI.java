@@ -4,16 +4,28 @@
  */
 package View.Consult;
 
+import Model.Flights_DAO;
+import View.Menu_GUI;
+
 /**
  *
  * @author guiespim
  */
 public class Consult_GUI extends javax.swing.JFrame {
+    
+    Flights_DAO flights;
+    Menu_GUI menu;
 
     /**
      * Creates new form Menu_GUI
      */
     public Consult_GUI() {
+        initComponents();
+    }
+    
+    public Consult_GUI(Flights_DAO flights, Menu_GUI menu) {
+        this.flights = flights;
+        this.menu = menu;
         initComponents();
     }
 
@@ -115,22 +127,22 @@ public class Consult_GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void perNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perNumberActionPerformed
-        new View.Consult.PerNumber_GUI().setVisible(true);
+        new View.Consult.PerNumber_GUI(this.flights, this).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_perNumberActionPerformed
 
     private void perOriginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perOriginActionPerformed
-        new View.Consult.PerOrigin_GUI().setVisible(true);
+        new View.Consult.PerOrigin_GUI(this.flights, this).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_perOriginActionPerformed
 
     private void perDestinationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perDestinationActionPerformed
-        new View.Consult.PerDestination_GUI().setVisible(true);
+        new View.Consult.PerDestination_GUI(this.flights, this).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_perDestinationActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        new View.Menu_GUI().setVisible(true);
+        this.menu.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_backActionPerformed
 
