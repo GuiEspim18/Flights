@@ -4,6 +4,9 @@
  */
 package View.Consult;
 
+import Model.Flight_DAO;
+import Model.Flights_DAO;
+
 /**
  *
  * @author guiespim
@@ -27,49 +30,38 @@ public class PerDestination_GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        consult = new javax.swing.JButton();
+        destinationName = new javax.swing.JTextField();
+        back = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         origin = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         destination = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        chairs = new javax.swing.JLabel();
-        back = new javax.swing.JButton();
+        line1 = new javax.swing.JLabel();
+        line2 = new javax.swing.JLabel();
+        line3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(46, 195, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Por Destino", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 13), new java.awt.Color(51, 51, 51))); // NOI18N
 
-        jButton7.setBackground(new java.awt.Color(248, 253, 255));
-        jButton7.setForeground(new java.awt.Color(46, 195, 255));
-        jButton7.setText("Consultar");
-
-        jTextField1.setBackground(new java.awt.Color(248, 253, 255));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        consult.setBackground(new java.awt.Color(248, 253, 255));
+        consult.setForeground(new java.awt.Color(46, 195, 255));
+        consult.setText("Consultar");
+        consult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                consultActionPerformed(evt);
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Origem:");
-
-        origin.setForeground(new java.awt.Color(51, 51, 51));
-        origin.setText("São Paulo");
-
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Destino:");
-
-        destination.setForeground(new java.awt.Color(51, 51, 51));
-        destination.setText("Lisboa");
-
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Assentos:");
-
-        chairs.setForeground(new java.awt.Color(51, 51, 51));
-        chairs.setText("1 [  ]     2 [  ]");
+        destinationName.setBackground(new java.awt.Color(248, 253, 255));
+        destinationName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                destinationNameActionPerformed(evt);
+            }
+        });
 
         back.setBackground(new java.awt.Color(248, 253, 255));
         back.setForeground(new java.awt.Color(46, 195, 255));
@@ -80,54 +72,83 @@ public class PerDestination_GUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setText("Origem:");
+
+        origin.setForeground(new java.awt.Color(51, 51, 51));
+
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setText("Destino:");
+
+        destination.setForeground(new java.awt.Color(51, 51, 51));
+
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setText("Assentos:");
+
+        line1.setForeground(new java.awt.Color(51, 51, 51));
+        line1.setText(" ");
+
+        line2.setForeground(new java.awt.Color(51, 51, 51));
+        line2.setText(" ");
+
+        line3.setForeground(new java.awt.Color(51, 51, 51));
+        line3.setText(" ");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(back))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(destinationName, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(consult))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(origin)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3))
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton7)
-                            .addComponent(destination)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(origin))
                             .addComponent(jLabel5)
-                            .addComponent(chairs))
+                            .addComponent(line1)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(destination))
+                            .addComponent(line2)
+                            .addComponent(line3))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(back))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
+                    .addComponent(consult, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(destinationName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(origin)
+                    .addComponent(origin))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(destination))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chairs)
-                .addGap(80, 80, 80)
+                .addComponent(line1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(line2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(line3)
+                .addGap(5, 5, 5)
                 .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
         );
 
@@ -145,14 +166,35 @@ public class PerDestination_GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         new View.Consult.Consult_GUI().setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_backActionPerformed
+
+    private void destinationNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destinationNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_destinationNameActionPerformed
+
+    private void consultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultActionPerformed
+        Flight_DAO flight = new Flights_DAO().perDestination(destinationName.getText());
+        javax.swing.JLabel[] chairs = { this.line1, this.line2, this.line3 };
+        this.origin.setText(flight.origin);
+        this.destination.setText(flight.destination);
+        String value = "";
+        if (flight != null) {
+            for (int i = 0; i < 6; i++) {
+                int index = i + 1;
+                String status = flight.reservation[i] ? "X" : " ";
+                if (index % 2 == 0) {
+                   value += index + " [" + status + "]";
+                   chairs[(index / 2) - 1].setText(value);
+                   value = "";
+                } else {
+                   value += index + " [" + status + "]  ";
+                }
+            }
+        }
+    }//GEN-LAST:event_consultActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,14 +234,16 @@ public class PerDestination_GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
-    private javax.swing.JLabel chairs;
+    private javax.swing.JButton consult;
     private javax.swing.JLabel destination;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JTextField destinationName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel line1;
+    private javax.swing.JLabel line2;
+    private javax.swing.JLabel line3;
     private javax.swing.JLabel origin;
     // End of variables declaration//GEN-END:variables
 }

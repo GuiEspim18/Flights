@@ -20,9 +20,9 @@ public class Flights_DAO {
         new Flight_DAO(10, "Campinas - Brasil", "Los Angeles - EUA")
     };
 
-    public Flight_DAO perFlightNumber() {
+    public Flight_DAO perFlightNumber(String value) {
         try {
-            int number = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número do voo: "));
+            int number = Integer.parseInt(value);
             boolean found = false;
             Flight_DAO flight = new Flight_DAO();
             for (int i = 0; i < flights.length; i++) {
@@ -43,9 +43,8 @@ public class Flights_DAO {
         return null;
     }
 
-    public Flight_DAO perOrigin() {
+    public Flight_DAO perOrigin(String origin) {
         try {
-            String origin = JOptionPane.showInputDialog(null, "Digite a origem do voo:");
             if (origin.isBlank() || origin.isEmpty()) {
                 throw new Exception();
             }
@@ -69,9 +68,8 @@ public class Flights_DAO {
         return null;
     }
 
-    public Flight_DAO perDestination() {
+    public Flight_DAO perDestination(String destination) {
         try {
-            String destination = JOptionPane.showInputDialog(null, "Digite o destino do voo:");
             if (destination.isBlank() || destination.isEmpty()) {
                 throw new Exception();
             }
